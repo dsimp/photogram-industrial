@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    @comment.destroy!
+    @comment.destroy
 
     respond_to do |format|
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
@@ -59,14 +59,13 @@ class CommentsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def comment_params
-    params.require(:comment).permit(:author_id, :photo_id, :body)
-  end
+    # Only allow a list of trusted parameters through.
+    def comment_params
+      params.require(:comment).permit(:author_id, :body, :photo_id)
+    end
 end

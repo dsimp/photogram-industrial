@@ -49,7 +49,7 @@ class FollowRequestsController < ApplicationController
 
   # DELETE /follow_requests/1 or /follow_requests/1.json
   def destroy
-    @follow_request.destroy!
+    @follow_request.destroy
 
     respond_to do |format|
       format.html { redirect_to follow_requests_url, notice: "Follow request was successfully destroyed." }
