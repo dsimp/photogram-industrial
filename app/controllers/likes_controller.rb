@@ -49,7 +49,7 @@ class LikesController < ApplicationController
 
   # DELETE /likes/1 or /likes/1.json
   def destroy
-    @like.destroy!
+    @like.destroy
 
     respond_to do |format|
       format.html { redirect_to likes_url, notice: "Like was successfully destroyed." }
