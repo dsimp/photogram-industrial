@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root "photos#index"
 
+
+
   devise_for :users
   
   resources :likes
@@ -13,5 +15,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "/:username" => "users#show", as: :user
 
 end
